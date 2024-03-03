@@ -22,6 +22,8 @@ void get_param_value(const char* data, const char* param_name, char*& value);
 // void write_to_file(const char* filename, const char * data);
 void write_to_file(const char* filename, unsigned int argc, ...);
 
+extern int main(); // program's entry point
+
 int info_page();
 int stats_page();
 int blog_page();

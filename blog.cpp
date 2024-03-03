@@ -1,7 +1,7 @@
 #include "main.h"
 
 
-void make_comment(char* author_name, char* author_comment);
+void make_comment();
 void form_data();
 
 int blog_page()
@@ -28,8 +28,8 @@ int blog_page()
 
 void make_comment()
 {
-	char* author_name;
-	char* author_comment;
+	char* author_name = nullptr;
+	char* author_comment = nullptr;
 
 	cout << "<div id=\"comment-block\">";
 	cout << "< div id=\"author-thumbnail\">";

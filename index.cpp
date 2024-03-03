@@ -3,7 +3,7 @@
 void main_page();
 void choose_page();
 
-int main()
+extern int main()
 {
 	setlocale(LC_ALL, "rus");
 	cout << "Content-type: text/html; charset=windows-1251\n\n";
@@ -48,7 +48,7 @@ void main_page()
 	cout << "<input type=\"text\" name='first-name' placeholder=\"First name\" required>";
 	cout << "<input type=\"text\" name='last-name' placeholder=\"Last name\" required>";
 	cout << "<input type=\"email\" name='email' placeholder=\"Email\" required>";
-	cout << "<input type=\"password\" name='passw' placeholder=\"Password\" required>";
+	cout << "<input type=\"password\" name='passw' placeholder=\"Password\">";
 	cout << "<input type=\"submit\" value=\"Sign In\">" << endl;
 	char* data = nullptr;
 
