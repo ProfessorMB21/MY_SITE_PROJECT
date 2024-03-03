@@ -16,7 +16,7 @@ int blog_page()
 		{
 			file.getline(line, 1024);
 			if (strcmp(line, "<!--SOURCE-->")) form_data();
-			if (strcmp(line, "<!--ENTRY-->")) make_comment();
+			//if (strcmp(line, "<!--ENTRY-->")) make_comment();
 			if (strcmp(line, "<!--CONTENT-->"))
 			{
 				cout << "Thank you for commenting!\n";
@@ -26,8 +26,11 @@ int blog_page()
 	return 0;
 }
 
-void make_comment(char *author_name, char * author_comment)
+void make_comment()
 {
+	char* author_name;
+	char* author_comment;
+
 	cout << "<div id=\"comment-block\">";
 	cout << "< div id=\"author-thumbnail\">";
 	cout << "< a href=\"#\">";
@@ -75,9 +78,14 @@ void form_data()
 	char* user_name = nullptr;
 	char* user_comment = nullptr;
 	char* email = nullptr;
-	const char* filename = "data.txt";
+	const char* filename = "blog_data.txt";
 
 	get_param_value(data, "user-name", user_name);
 	get_param_value(data, "user-comment", user_comment);
 	get_param_value(data, "user-email", email);
+
+	// log data to file
+	write_to_file(filename, 1, user_name);
+	write_to_file(filename, 1, email);
+	write_to_file(filename, 1, user_comment);
 }

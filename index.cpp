@@ -1,6 +1,7 @@
 ﻿#include "main.h"
 
 void main_page();
+void choose_page();
 
 int main()
 {
@@ -14,13 +15,9 @@ int main()
 		while (!file.eof())
 		{
 			file.getline(line, 1024);
-			if (strcmp(line, "<!--CONTENT-->"))
+			if (!strcmp(line, "<!--CONTENT-->"))
 			{
-
-				if (strcmp(q_string, "blog.html")) blog_page();
-				else if (strcmp(q_string, "table.html")) stats_page();
-				else if (strcmp(q_string, "about.html")) info_page();
-				else main_page();
+				main_page();
 			}
 			else
 				cout << line << endl;
@@ -42,7 +39,6 @@ void showContent()
 	}
 }
 */
-
 
 void main_page()
 {
@@ -80,10 +76,10 @@ void main_page()
 	cout << "</div>" << endl;
 
 	// log all data to a file before cleaning
-	write_to_file(first_name, filename);
-	write_to_file(last_name, filename);
-	write_to_file(email, filename);
-	write_to_file(password, filename);
+	write_to_file(filename, 2, first_name, last_name);
+	//write_to_file(filename, last_name);
+	write_to_file(filename, 1, email);
+	write_to_file(filename, 1, password);
 
 	delete[] data;
 }
