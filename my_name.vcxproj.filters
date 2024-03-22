@@ -18,38 +18,27 @@
     <ClCompile Include="index.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stats.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="info.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="blog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cgi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="about.tmpl">
+    <None Include="changes.md" />
+    <None Include="..\index.tmpl">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="blog.tmpl">
+    <None Include="..\table.tmpl">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="index.tmpl">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="table.tmpl">
+    <None Include="..\about.tmpl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
