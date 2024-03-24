@@ -41,6 +41,7 @@ int main(){
 
 #ifndef _DEBUG
 			cout << "<br>Method: " << (get_request_method() == post ? "POST" : "GET");
+			cout << "Your IP address: " << get_host_ip() << endl;
 			get_form_data(data);
 #else
 			data = _strdup("username=%D1%E5%F0%E3%E5%E9&age=43");

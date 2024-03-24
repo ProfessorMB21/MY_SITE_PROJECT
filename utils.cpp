@@ -19,12 +19,7 @@ namespace file_io
 			s = va_arg(pdata, char*);
 			if (s)
 			{
-				outfile << "<div id = \"comment-header\">";
-				outfile << "<p>" << s << "</p>";
-				outfile << "< / div>";
-				outfile << "<div id=\"comment-content\">";
-				outfile << "<p>This is where the comment lies< / p>";
-				outfile << "</div>";
+				outfile.write(s, sizeof(s));
 				outfile << "\n";
 			}
 		}
