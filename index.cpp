@@ -1,4 +1,5 @@
-﻿#include "main.h"
+﻿// The homepage of my_site.com
+
 #include "cgi.h"
 #include "utils.h"
 #include <iostream>

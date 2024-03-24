@@ -151,11 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cgi.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\about.tmpl" />
     <None Include="..\index.tmpl" />
     <None Include="..\table.tmpl" />
     <None Include="changes.md" />
