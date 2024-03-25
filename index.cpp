@@ -16,8 +16,6 @@ int main(){
 	char* current_url = get_current_url();
 
 	ifstream file("index.tmpl");
-
-	// Trying to save from spaghetti code.
 	if (!file.is_open()) return -1;
 
 	char* line = new char[1024];

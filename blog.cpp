@@ -11,6 +11,9 @@ void make_comment();
 
 int main()
 {
+	setlocale(LC_ALL, "rus");
+	cout << "Content-type: text/html; charset=windows-1251\n\n";
+
 	const char* filename = "blog.tmpl";
 	ifstream file(filename);
 	if (file.is_open())
@@ -44,15 +47,6 @@ int main()
 
 void make_comment()
 {
-	cout << "<div id=\"comment-block\">";
-	cout << "<div id=\"author-thumbnail\">";
-	cout << "<a href =\"#\">";
-	cout << "<div id = \"author-thumbnail-circle\">";
-	cout << "< / div>";
-	cout << "</a>";
-	cout << "</div>";
-	cout << "<div id = \"main\">";
-
 	ifstream file("blog_data.txt");
 	if (file.is_open())
 	{
@@ -63,9 +57,6 @@ void make_comment()
 			cout << line << endl;
 		}
 	}
-	cout << "<div id=\"comment-action-buttons\"></div>";
-	cout << "< / div>";
-	cout << "</div>";
 }
 
 void form_data()

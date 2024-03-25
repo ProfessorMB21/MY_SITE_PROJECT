@@ -143,19 +143,22 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <OutputFile>E:\Games\OSPanel\domains\localhost\index.cgi</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Utils\cgi.cpp" />
+    <ClCompile Include="..\Utils\utils.cpp" />
     <ClCompile Include="index.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Utils\cgi.h" />
+    <ClInclude Include="..\Utils\utils.h" />
     <ClInclude Include="cgi.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\index.tmpl" />
-    <None Include="..\table.tmpl" />
     <None Include="changes.md" />
   </ItemGroup>
   <ItemGroup>

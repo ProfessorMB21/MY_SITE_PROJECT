@@ -35,13 +35,25 @@ namespace file_io
 		if (!outfile) cerr << "Can't write to file, " << filename;
 		if (c_author && c_content)
 		{
+			outfile << "<div id=\"comment-block\">";
+			outfile << "<div id=\"author-thumbnail\">";
+			outfile << "<a href =\"#\">";
+			outfile << "<div id = \"author-thumbnail-circle\">";
+			outfile << "</div>";
+			outfile << "</a>";
+			outfile << "</div>";
+			outfile << "<div id = \"main\">";
 			outfile << "<div id = \"comment-header\">";
 			outfile << "<p>" << c_author << "</p>";
-			outfile << "< / div>";
+			outfile << "</div>";
 			outfile << "<div id=\"comment-content\">";
 			outfile << "<p>" << c_content << "</p>";
 			outfile << "</div>";
-			outfile << "\n";
+			outfile << "<div id=\"comment-action-buttons\"></div>";
+			outfile << "< / div>";
+			outfile << "</div>";
+			outfile << '\n';
+
 		}
 		// delete[] s;
 		outfile.close();
