@@ -158,8 +158,8 @@
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\index.tmpl" />
     <None Include="changes.md" />
+    <None Include="E:\Games\OSPanel\domains\localhost\index.tmpl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utils\Utils.vcxproj">

@@ -34,7 +34,6 @@ int main(){
 			cout << "<input type=\"submit\" value=\"Sign In\">" << endl;
 
 			char* data = nullptr;
-			//get_form_data(data);
 			char* value = nullptr;
 
 #ifndef _DEBUG
@@ -44,7 +43,7 @@ int main(){
 #else
 			data = _strdup("username=%D1%E5%F0%E3%E5%E9&age=43");
 #endif
-			cout << "<br>Your details: " << data << endl;
+			//cout << "<br>Your details: " << data << endl;
 			char* first_name = nullptr;
 			char* last_name = nullptr;
 			char* password = nullptr;
@@ -53,18 +52,20 @@ int main(){
 
 			get_param_value(data, "first-name", first_name);
 			get_param_value(data, "last-name", last_name);
-			get_param_value(data, "passw", password);
-			get_param_value(data, "email", email);
 			if (first_name && last_name)
 				cout << "<p>Welcome, " << first_name << " " << last_name << "</p>";
+
+			get_param_value(data, "passw", password);
 			if (password)
 				cout << "Your password: " << password;
 			cout << "</div>" << endl;
 
+			//get_param_value(data, "email", email);
+
 			// log all data to a file before cleaning
 			write_to_file(filename, 2, first_name, last_name);
 			//write_to_file(filename, last_name);
-			write_to_file(filename, 1, email);
+			//write_to_file(filename, 1, email);
 			write_to_file(filename, 1, password);
 
 			delete[] data;

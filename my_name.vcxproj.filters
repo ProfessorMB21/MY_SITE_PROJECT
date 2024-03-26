@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="changes.md" />
-    <None Include="..\index.tmpl">
+    <None Include="E:\Games\OSPanel\domains\localhost\index.tmpl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

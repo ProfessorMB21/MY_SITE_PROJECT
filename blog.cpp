@@ -22,16 +22,15 @@ int main()
 		while (!file.eof())
 		{
 			file.getline(line, 1024);
-			// U haved a bug here: u used `strcmp` not `!strcmp`
 			
-			if (!strcmp(line, "<!--SOURCE-->")) {
+			if (!strcmp(line, "<!--ENTRY-->")) {
 				form_data();
 			}
-			else if (!strcmp(line, "<!--ENTRY-->"))	// write pre-existing comments from file
+			if (!strcmp(line, "<!--SOURCE-->"))	// write pre-existing comments from file
 			{
 				make_comment();
 			}
-			else if (!strcmp(line, "<!--CONTENT-->"))
+			if (!strcmp(line, "<!--CONTENT-->"))
 			{
 				cout << "Thank you for commenting!\n";
 			}
