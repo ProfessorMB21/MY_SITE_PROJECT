@@ -22,21 +22,16 @@ int main()
 		while (!file.eof())
 		{
 			file.getline(line, 1024);
-			
-			if (!strcmp(line, "<!--ENTRY-->")) {
+			if (!strcmp(line, "<!--FORM-->"))
+			{
 				form_data();
 			}
-			if (!strcmp(line, "<!--SOURCE-->"))	// write pre-existing comments from file
+			if (!strcmp(line, "<!--SOURCE-->"))
 			{
 				make_comment();
 			}
-			if (!strcmp(line, "<!--CONTENT-->"))
-			{
-				cout << "Thank you for commenting!\n";
-			}
-			else {
+			else
 				cout << line << endl;
-			}
 		}
 		file.close();
 		delete[] line;
@@ -52,9 +47,11 @@ void make_comment()
 		char* line = new char[1024];
 		while (!file.eof())
 		{
-			file.getline(line, sizeof(line));
+			file.getline(line, 1024);
 			cout << line << endl;
 		}
+		delete[] line;
+		file.close();
 	}
 }
 
@@ -65,6 +62,8 @@ void form_data()
 	cout << "<label for=\"comment_author\" class=\"required\">Your name</label>";
 	cout << "<input name=\"user-name\" type=\"text\" placeholder =\"Full name\" required=\"required\">";
 	cout << "</div>";
+
+	// under development
 	/*
 	cout << "<div>";
 	cout << "<label for=\"email\" class=\"required\">Your email< / label>";
@@ -73,19 +72,16 @@ void form_data()
 	*/
 	cout << "<div>";
 	cout << "<label for=\"comment\" class=\"required\">Your message</label>";
-	cout << "<textarea name=\"user-comment\" id=\"comment\" rows=\"2\" cols=\"250\" placeholder=\"Comment here...\" minlength=\"4\" maxlength=\"4086\" required=\"required\"></textarea>";
+	cout << "<textarea name=\"user-comment\" id=\"comment\" rows=\"2\" cols=\"1500\" placeholder=\"Comment here...\" minlength=\"4\" maxlength=\"4086\" required=\"required\"></textarea>";
 	cout << "</div>";
 	cout << "<input name=\"submit\" type=\"submit\" value=\"Submit comment\"/>";
 	cout << "</form>";
 
-	// To check that to server was sended post request use this
 	if (get_request_method() == post) {
-		// Logic of using get_param_value use here
 		char* data = nullptr;
 
 		get_form_data(data);
 
-		cout << "<br>Your details: " << data << endl;
 		char* user_name = nullptr;
 		char* user_comment = nullptr;
 		const char* filename = "blog_data.txt";

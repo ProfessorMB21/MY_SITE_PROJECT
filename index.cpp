@@ -37,8 +37,6 @@ int main(){
 			char* value = nullptr;
 
 #ifndef _DEBUG
-			cout << "<br>Method: " << (get_request_method() == post ? "POST" : "GET");
-			cout << "Your IP address: " << get_host_ip() << endl;
 			get_form_data(data);
 #else
 			data = _strdup("username=%D1%E5%F0%E3%E5%E9&age=43");
@@ -57,7 +55,10 @@ int main(){
 
 			get_param_value(data, "passw", password);
 			if (password)
-				cout << "Your password: " << password;
+			{
+				cout << "Your password: " << password << "<br>\n";
+				cout << "Your IP address: <p>" << get_host_ip() <<"</p>\n";
+			}
 			cout << "</div>" << endl;
 
 			//get_param_value(data, "email", email);
