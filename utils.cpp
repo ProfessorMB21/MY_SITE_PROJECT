@@ -3,6 +3,7 @@
 //
 namespace file_io
 {
+	// Function write data from forms to a specified file
 	void write_to_file(const char* filename, unsigned int argc, ...)
 	{
 		va_list pdata;
@@ -25,6 +26,37 @@ namespace file_io
 		// delete[] s;
 		outfile.close();
 		va_end(pdata);
+	}
+
+	// prototype of write_to_file used for comments
+	void wtof_(const char* filename, const char * c_author, const char * c_content)
+	{
+		ofstream outfile(filename, ios_base::app);
+		if (!outfile) cerr << "Can't write to file, " << filename;
+		if (c_author && c_content)
+		{
+			outfile << "<div id=\"comment-block\">";
+			outfile << "<div id=\"author-thumbnail\">";
+			outfile << "<a href =\"#\">";
+			outfile << "<div id = \"author-thumbnail-circle\">";
+			outfile << "</div>";
+			outfile << "</a>";
+			outfile << "</div>";
+			outfile << "<div id = \"main\">";
+			outfile << "<div id = \"comment-header\">";
+			outfile << "<p>" << c_author << "</p>";
+			outfile << "</div>";
+			outfile << "<div id=\"comment-content\">";
+			outfile << "<p>" << c_content << "</p>";
+			outfile << "</div>";
+			outfile << "<div id=\"comment-action-buttons\"></div>";
+			outfile << "< / div>";
+			outfile << "</div>";
+			outfile << '\n';
+
+		}
+		// delete[] s;
+		outfile.close();
 	}
 
 	// This function is just for reading static tmpl files.

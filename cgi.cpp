@@ -104,4 +104,17 @@ namespace cgi_utils
 
 		}
 	}
+
+	// Returns the host's remote IP address
+	char* get_host_ip()
+	{
+		size_t realsize;
+		size_t size = 65536;
+		char* buf = new char[size];
+		getenv_s(&realsize, buf, size, "REMOTE_ADDR");
+		char* addr = new char[realsize + 1];
+		strcpy_s(addr, realsize + 1, buf);
+		delete[] buf;
+		return addr;
+	}
 }

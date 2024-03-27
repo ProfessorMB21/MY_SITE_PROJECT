@@ -18,27 +18,30 @@
     <ClCompile Include="index.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Utils\utils.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Utils\cgi.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cgi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Utils\cgi.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Utils\utils.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="changes.md" />
-    <None Include="..\index.tmpl">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\table.tmpl">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\about.tmpl">
+    <None Include="E:\Games\OSPanel\domains\localhost\index.tmpl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

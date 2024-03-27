@@ -1,4 +1,5 @@
-﻿#include "main.h"
+﻿// The homepage of my_site.com
+
 #include "cgi.h"
 #include "utils.h"
 #include <iostream>
@@ -15,8 +16,6 @@ int main(){
 	char* current_url = get_current_url();
 
 	ifstream file("index.tmpl");
-
-	// Trying to save from spaghetti code.
 	if (!file.is_open()) return -1;
 
 	char* line = new char[1024];
@@ -35,16 +34,14 @@ int main(){
 			cout << "<input type=\"submit\" value=\"Sign In\">" << endl;
 
 			char* data = nullptr;
-			//get_form_data(data);
 			char* value = nullptr;
 
 #ifndef _DEBUG
-			cout << "<br>Method: " << (get_request_method() == post ? "POST" : "GET");
 			get_form_data(data);
 #else
 			data = _strdup("username=%D1%E5%F0%E3%E5%E9&age=43");
 #endif
-			cout << "<br>Your details: " << data << endl;
+			//cout << "<br>Your details: " << data << endl;
 			char* first_name = nullptr;
 			char* last_name = nullptr;
 			char* password = nullptr;
@@ -53,18 +50,23 @@ int main(){
 
 			get_param_value(data, "first-name", first_name);
 			get_param_value(data, "last-name", last_name);
-			get_param_value(data, "passw", password);
-			get_param_value(data, "email", email);
 			if (first_name && last_name)
 				cout << "<p>Welcome, " << first_name << " " << last_name << "</p>";
+
+			get_param_value(data, "passw", password);
 			if (password)
-				cout << "Your password: " << password;
+			{
+				cout << "Your password: " << password << "<br>\n";
+				cout << "Your IP address: <p>" << get_host_ip() <<"</p>\n";
+			}
 			cout << "</div>" << endl;
+
+			//get_param_value(data, "email", email);
 
 			// log all data to a file before cleaning
 			write_to_file(filename, 2, first_name, last_name);
 			//write_to_file(filename, last_name);
-			write_to_file(filename, 1, email);
+			//write_to_file(filename, 1, email);
 			write_to_file(filename, 1, password);
 
 			delete[] data;
