@@ -41,7 +41,6 @@ int main(){
 #else
 			data = _strdup("username=%D1%E5%F0%E3%E5%E9&age=43");
 #endif
-			//cout << "<br>Your details: " << data << endl;
 			char* first_name = nullptr;
 			char* last_name = nullptr;
 			char* password = nullptr;

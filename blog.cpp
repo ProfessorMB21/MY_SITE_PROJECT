@@ -14,8 +14,7 @@ int main()
 	setlocale(LC_ALL, "rus");
 	cout << "Content-type: text/html; charset=windows-1251\n\n";
 
-	const char* filename = "blog.tmpl";
-	ifstream file(filename);
+	ifstream file("blog.tmpl");
 	if (file.is_open())
 	{
 		char* line = new char[1024];
