@@ -73,7 +73,7 @@ void form_data()
 	cout << "<label for=\"comment\" class=\"required\">Your message</label>";
 	cout << "<textarea name=\"user-comment\" id=\"comment\" rows=\"2\" cols=\"1500\" placeholder=\"Comment here...\" minlength=\"4\" maxlength=\"4086\" required=\"required\"></textarea>";
 	cout << "</div>";
-	cout << "<input name=\"submit\" type=\"submit\" value=\"Submit comment\"/>";
+	cout << "<input name=\"submit\" type=\"submit\" id='btn-submit' value=\"Submit comment\"/>";
 	cout << "</form>";
 
 	if (get_request_method() == post) {

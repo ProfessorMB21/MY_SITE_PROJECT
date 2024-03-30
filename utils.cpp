@@ -30,6 +30,14 @@ namespace file_io
 
 	// Function write data from forms to a specified file
 	// second variant of write_to_file function specifically for queue task requirement
+	// Args must be in the following order;
+	//		- Full name (first name and last name as separate args)
+	//		- Gender
+	//		- Age
+	//		- Place of work
+	//		- Income
+	//		- Purpose of application
+	//
 	void write_to_file_2(const char* filename, unsigned int argc, ...)
 	{
 		va_list pdata;
@@ -88,10 +96,10 @@ namespace file_io
 			outfile << c_gender << "</div>";
 			outfile << "<div class=\"cell\" data-title=\"Age\">";
 			outfile << c_age << "</div>";
-			outfile << "<div class=\"cell\" data-title=\"Salary\">";
-			outfile << c_income << "</div>";
 			outfile << "<div class=\"cell\" data-title=\"Location\">";
 			outfile << c_work_place << "</div></div>";
+			outfile << "<div class=\"cell\" data-title=\"Salary\">";
+			outfile << c_income << "</div>";
 			outfile << "<div class=\"cell\" data-title=\"Job Title\">";
 			outfile << c_purpose << "</div>";
 			outfile << '\n';

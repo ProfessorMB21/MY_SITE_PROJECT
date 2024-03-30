@@ -31,10 +31,9 @@ int main(){
 			cout << "<input type=\"text\" name='last-name' placeholder=\"Last name\" required>";
 			cout << "<input type=\"email\" name='email' placeholder=\"Email\" required>";
 			cout << "<input type=\"password\" name='passw' placeholder=\"Password\">";
-			cout << "<input type=\"submit\" value=\"Sign In\">" << endl;
+			cout << "<input type=\"submit\" id='btn-submit' value=\"Sign In\">" << endl;
 
 			char* data = nullptr;
-			char* value = nullptr;
 
 #ifndef _DEBUG
 			get_form_data(data);
@@ -60,13 +59,8 @@ int main(){
 			}
 			cout << "</div>" << endl;
 
-			//get_param_value(data, "email", email);
-
 			// log all data to a file before cleaning
-			write_to_file(filename, 2, first_name, last_name);
-			//write_to_file(filename, last_name);
-			//write_to_file(filename, 1, email);
-			write_to_file(filename, 1, password);
+			write_to_file(filename, 3, first_name, last_name, password);
 
 			delete[] data;
 		}
