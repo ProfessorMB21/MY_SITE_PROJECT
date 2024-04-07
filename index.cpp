@@ -31,38 +31,36 @@ int main(){
 			cout << "<input type=\"text\" name='last-name' placeholder=\"Last name\" required>";
 			cout << "<input type=\"email\" name='email' placeholder=\"Email\" required>";
 			cout << "<input type=\"password\" name='passw' placeholder=\"Password\">";
-			cout << "<input type=\"submit\" id='btn-submit' value=\"Sign In\">" << endl;
+			cout << "<input type=\"submit\" id='btn-submit' value=\"Sign In\"></form>" << endl;
 
-			char* data = nullptr;
-
-#ifndef _DEBUG
-			get_form_data(data);
-#else
-			data = _strdup("username=%D1%E5%F0%E3%E5%E9&age=43");
-#endif
-			char* first_name = nullptr;
-			char* last_name = nullptr;
-			char* password = nullptr;
-			char* email = nullptr;
-			const char* filename = "data.txt";
-
-			get_param_value(data, "first-name", first_name);
-			get_param_value(data, "last-name", last_name);
-			if (first_name && last_name)
-				cout << "<p>Welcome, " << first_name << " " << last_name << "</p>";
-
-			get_param_value(data, "passw", password);
-			if (password)
+			if (get_request_method() == post)
 			{
-				cout << "Your password: " << password << "<br>\n";
-				cout << "Your IP address: <p>" << get_host_ip() <<"</p>\n";
+				char* data = nullptr;
+
+				get_form_data(data);
+
+				char* first_name = nullptr;
+				char* last_name = nullptr;
+				char* password = nullptr;
+				const char* filename = "data.txt";
+
+				get_param_value(data, "first-name", first_name);
+				get_param_value(data, "last-name", last_name);
+				if (first_name && last_name)
+					cout << "<p>Welcome, " << first_name << " " << last_name << "</p>";
+
+				get_param_value(data, "passw", password);
+				if (password)
+				{
+					cout << "Your password: " << password << "<br>\n";
+					cout << "Your IP address: <p>" << get_host_ip() << "</p>\n";
+				}
+				cout << "</div>" << endl;
+
+				// log all data to a file before cleaning
+				write_to_file_2(filename, 3, first_name, last_name, password);
+				delete[] data;
 			}
-			cout << "</div>" << endl;
-
-			// log all data to a file before cleaning
-			write_to_file(filename, 3, first_name, last_name, password);
-
-			delete[] data;
 		}
 		else
 			cout << line << endl;

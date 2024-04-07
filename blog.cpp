@@ -69,6 +69,7 @@ void form_data()
 	cout << "<input name=\"user-email\" type=\"email\" placeholder=\"user@domain.com\" required=\"required\">";
 	cout << "</div>";
 	*/
+
 	cout << "<div>";
 	cout << "<label for=\"comment\" class=\"required\">Your message</label>";
 	cout << "<textarea name=\"user-comment\" id=\"comment\" rows=\"2\" cols=\"1500\" placeholder=\"Comment here...\" minlength=\"4\" maxlength=\"4086\" required=\"required\"></textarea>";
@@ -91,5 +92,6 @@ void form_data()
 		{
 			wtof_(filename, user_name, user_comment);
 		}
+		delete[] data;
 	}
 }
