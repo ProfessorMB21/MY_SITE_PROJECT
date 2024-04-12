@@ -53,7 +53,7 @@ int main(){
 				if (password)
 				{
 					cout << "Your password: " << password << "<br>\n";
-					cout << "Your IP address: <p>" << get_host_ip() << "</p>\n";
+					cout << "Your bitchass IP address: <p>" << get_host_ip() << "</p>\n";
 				}
 				cout << "</div>" << endl;
 

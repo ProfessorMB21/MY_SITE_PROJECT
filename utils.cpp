@@ -51,9 +51,8 @@ namespace file_io
 			for (unsigned int i = 0; i < argc; i++)
 			{
 				s = va_arg(pdata, char*);
-				outfile << s << " ";
+				outfile << s << "\n";
 			}
-			outfile << '\n';
 			outfile.close();
 		}
 		va_end(pdata);
