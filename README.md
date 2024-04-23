@@ -1,1 +1,1 @@
-# my_name
+# My freshman second semester project in C++
