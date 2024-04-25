@@ -135,18 +135,6 @@ public:
 			pretty(temp->m_username, temp->m_user_comment);
 			top = top->next;
 		}
-		cout << "Stack length: " << len() << endl;
-	}
-
-	int len()
-	{
-		int _len = 0;
-		while (top)
-		{
-			top = top->next;
-			_len++;
-		}
-		return _len;
 	}
 
 };
@@ -169,11 +157,11 @@ void _make_comment()
 			file.getline(line2, 100000);
 			if (line1 && line2) // read first line
 			{
-				cout << "line1: " << line1 << "\n" << "line2: " << line2 << endl;
 				strcpy_s(name, strlen(line1) + 1, line1);
 				strcpy_s(comment, strlen(line2) + 1, line2);
-				stack.push(name, comment);
+				stack.push(line1, line2);
 			}
+			//stack.push(name, comment);
 		}
 		delete name; delete comment;
 		file.close();
@@ -182,7 +170,6 @@ void _make_comment()
 	stack.print();
 }
 
-// Program entry point
 int main()
 {
 	setlocale(LC_ALL, "rus");
