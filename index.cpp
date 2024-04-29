@@ -12,9 +12,7 @@ using namespace file_io;
 int main(){
 	setlocale(LC_ALL, "rus");
 	cout << "Content-type: text/html; charset=windows-1251\n\n";
-
-	char* current_url = get_current_url();
-
+	
 	ifstream file("index.tmpl");
 	if (!file.is_open()) return -1;
 
@@ -27,49 +25,55 @@ int main(){
 			cout << "<div class='div-form'>";
 			cout << "<p>Fill in the form</p>";
 			cout << "<form method='post' action='index.cgi' class='login-form'>\n";
-			cout << "<input type=\"text\" name='first-name' placeholder=\"First name\" required>";
-			cout << "<input type=\"text\" name='last-name' placeholder=\"Last name\" required>";
-			cout << "<input type=\"email\" name='email' placeholder=\"Email\" required>";
+			cout << "<input type=\"text\" name='user-name' placeholder=\"Username\" required>";
+			//cout << "<input type=\"email\" name='email' placeholder=\"Email\" required>";
 			cout << "<input type=\"password\" name='passw' placeholder=\"Password\">";
-			cout << "<input type=\"submit\" value=\"Sign In\">" << endl;
+			cout << "<input type=\"submit\" id='btn-submit' value=\"Sign In\"></form>" << endl;
 
-			char* data = nullptr;
-			char* value = nullptr;
-
-#ifndef _DEBUG
-			get_form_data(data);
-#else
-			data = _strdup("username=%D1%E5%F0%E3%E5%E9&age=43");
-#endif
-			//cout << "<br>Your details: " << data << endl;
-			char* first_name = nullptr;
-			char* last_name = nullptr;
-			char* password = nullptr;
-			char* email = nullptr;
-			const char* filename = "data.txt";
-
-			get_param_value(data, "first-name", first_name);
-			get_param_value(data, "last-name", last_name);
-			if (first_name && last_name)
-				cout << "<p>Welcome, " << first_name << " " << last_name << "</p>";
-
-			get_param_value(data, "passw", password);
-			if (password)
+			if (get_request_method() == post)
 			{
-				cout << "Your password: " << password << "<br>\n";
-				cout << "Your IP address: <p>" << get_host_ip() <<"</p>\n";
+				char* data = nullptr;
+				script_type_err error_code = no_script_run; // to manage incorrect client input
+
+				get_form_data(data);
+
+				const char* tmp_pwd = "me";
+				const char* tmp_uname = "bupe";
+
+
+				char* username = nullptr;
+				char* password = nullptr;
+				const char* filename = "data.txt";
+
+				get_param_value(data, "user-name", username);
+				get_param_value(data, "passw", password);
+				if (!strcmp(password, tmp_pwd) && !strcmp(username, tmp_uname))
+				{
+					error_code = script_acc_granted;
+					script_err_run(error_code);
+					cout << "<meta http-equiv='refresh' content='0;URL=blog.cgi'>\n";
+				}
+				else if (strcmp(username, tmp_uname) && strcmp(password, tmp_pwd)) // check if both the password and username are incorrect
+				{
+					error_code = script_err_all;
+					script_err_run(error_code);
+				}
+				else if (strcmp(username, tmp_uname))
+				{
+					error_code = script_err_uname;
+					script_err_run(error_code);
+				}
+				else if (strcmp(password, tmp_pwd))
+				{
+					error_code = script_err_passw;
+					script_err_run(error_code);
+				}
+				cout << "</div>" << endl;
+
+				// log all data to a file before cleaning
+				write_to_file_2(filename, 2, username, password);
+				delete[] data;
 			}
-			cout << "</div>" << endl;
-
-			//get_param_value(data, "email", email);
-
-			// log all data to a file before cleaning
-			write_to_file(filename, 2, first_name, last_name);
-			//write_to_file(filename, last_name);
-			//write_to_file(filename, 1, email);
-			write_to_file(filename, 1, password);
-
-			delete[] data;
 		}
 		else
 			cout << line << endl;
